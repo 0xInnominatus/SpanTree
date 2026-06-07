@@ -1,2 +1,2 @@
 # SpanTree
-Array&amp;dapn-based binary tree layout with formal verification
+Array&span-based binary tree layout with formal verification

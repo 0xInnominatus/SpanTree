@@ -1,0 +1,3 @@
+# dfyconfig.toml
+[options]
+standard-libraries = true

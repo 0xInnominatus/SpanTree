@@ -10,16 +10,12 @@ module {:extern "ArrayTreeUtils"} ArrayTreeUtils
 		requires 0 <= index < x.Length
 		decreases x.Length - index
 	{
-		if compare(x[index], empty) == 0 then
-			if Right(index) < x.Length then
+		Right(index) >= x.Length ||
+			((compare(x[index], empty) == 0 ==>
 				compare(x[Left(index)], empty) == 0 &&
-				compare(x[Right(index)], empty) == 0 &&
-				IsCompact(x, empty, compare, Left(index)) &&
-				IsCompact(x, empty, compare, Right(index))
-			else
-				true
-		else
-			false
+				compare(x[Right(index)], empty) == 0) &&
+			IsCompact(x, empty, compare, Left(index)) &&
+			IsCompact(x, empty, compare, Right(index)))
 	}
 
 	predicate LessIfNotEmpty<T(!new)(==)(0)>(a : T, b: T, empty: T, compare: (T, T) -> int)

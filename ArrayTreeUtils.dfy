@@ -12,7 +12,10 @@ module {:extern "ArrayTreeUtils"} ArrayTreeUtils
 	{
 		if compare(x[index], empty) == 0 then
 			if Right(index) < x.Length then
-				IsCompact(x, empty, compare, Left(index)) && IsCompact(x, empty, compare, Right(index))
+				compare(x[Left(index)], empty) == 0 &&
+				compare(x[Right(index)], empty) == 0 &&
+				IsCompact(x, empty, compare, Left(index)) &&
+				IsCompact(x, empty, compare, Right(index))
 			else
 				true
 		else
